@@ -1,22 +1,27 @@
 package com.gojek.parkinglot;
 
+import com.gojek.exceptions.ParkingLotNotPresent;
+import com.gojek.exceptions.ParkingOverflowException;
 import com.gojek.spot.ParkingSpot;
-import com.gojek.vehicle.Car;
+import com.gojek.vehicle.Vehicle;
+
+import java.util.ArrayList;
 
 
 public interface IParkingLot {
 
     public void printStatus();
 
-    public void unpark(ParkingSpot spot);
+    public boolean unpark(ParkingSpot spot);
 
-    public void park(Car input);
+    public ParkingSpot park(Vehicle input) throws ParkingOverflowException,ParkingLotNotPresent;
 
     public void createParkingLot(String size);
 
     public String getParkingSpotForRegistration(String number);
 
-    public String getParkingSpotForColour(String colour);
+    public ArrayList<Integer> getParkingSpotForColour(String colour);
 
+    public ArrayList<String> getRegistrationNumberOfColour(String colour);
 
 }
