@@ -1,5 +1,10 @@
 package com.gojek.parkinglot;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeSet;
+
 import com.gojek.exceptions.ParkingLotNotPresent;
 import com.gojek.exceptions.ParkingOverflowException;
 import com.gojek.spot.ParkingSpot;
@@ -7,14 +12,8 @@ import com.gojek.spot.SpotSize;
 import com.gojek.vehicle.Car;
 import com.gojek.vehicle.Vehicle;
 
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeSet;
-
 public class ParkingLotImpl implements IParkingLot {
-    // region members statrt
+    // region members start
     private Object lockObj = new Object();
     private Map<ParkingSpot, Vehicle> parkedCarMap = null;
     private int park_lot_max_size;
@@ -32,7 +31,19 @@ public class ParkingLotImpl implements IParkingLot {
 
     //region methods
 
-    public void createParkingLot(String size) {
+    public Map<ParkingSpot, Vehicle> getParkedCarMap() {
+		return parkedCarMap;
+	}
+
+	public int getPark_lot_max_size() {
+		return park_lot_max_size;
+	}
+
+	public TreeSet<ParkingSpot> getAvailableSpots() {
+		return availableSpots;
+	}
+
+	public void createParkingLot(String size) {
         int _size = Integer.parseInt(size);
         park_lot_max_size = _size;
         parkedCarMap = new HashMap<ParkingSpot, Vehicle>(_size);
