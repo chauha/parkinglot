@@ -16,7 +16,7 @@ public interface IParkingLot {
 
     public ParkingSpot park(Vehicle input) throws ParkingOverflowException,ParkingLotNotPresent;
 
-    public void createParkingLot(String size);
+    public boolean createParkingLot(String size);
 
     public String getParkingSpotForRegistration(String number);
 

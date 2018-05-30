@@ -43,7 +43,7 @@ public class ParkingLotImpl implements IParkingLot {
 		return availableSpots;
 	}
 
-	public void createParkingLot(String size) {
+	public boolean createParkingLot(String size) {
         int _size = Integer.parseInt(size);
         park_lot_max_size = _size;
         parkedCarMap = new HashMap<ParkingSpot, Vehicle>(_size);
@@ -51,7 +51,8 @@ public class ParkingLotImpl implements IParkingLot {
         for (int index = 1; index <= park_lot_max_size; index++) {
             availableSpots.add(new ParkingSpot(index, null, SpotSize.Large));
         }
-    }
+        return (availableSpots.size() > 0);
+	}
 
     public ParkingSpot park(Vehicle input) throws ParkingOverflowException, ParkingLotNotPresent {
         Car car = (Car) input;

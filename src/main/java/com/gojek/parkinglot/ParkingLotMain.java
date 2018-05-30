@@ -37,7 +37,12 @@ public class ParkingLotMain {
                         command = commandLine[0];
                         switch (Commands.getCommand(command)) {
                             case CREATE:
-                                parkingLot.createParkingLot(commandLine[1]);
+                                boolean result= parkingLot.createParkingLot(commandLine[1]);
+                                if (result) {
+                                	System.out.println("Created a Parking Lot with"+commandLine[1] +"spots"); 
+                                }else {
+                                	System.out.println("Failed to create Parking lot");
+                                }
                                 break;
                             case LEAVE:
                                 spotNum = Integer.parseInt(commandLine[1]);
